@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>9</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>27</x>
+      <y>297</y>
+      <w>270</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>KsiazkaAdresowa
+-----------------------------------------------------------------
+idLoggedUser : integer
+------------------------------------------------------
+insertNewUser() : void
+checkPaswordAndReturnUserId() : int
+internalMenu() : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>342</x>
+      <y>297</y>
+      <w>225</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>User
+-----------------------------------------------------------------
+userId : integer
+userLogin : string
+userPassword : string
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
