@@ -1,24 +1,12 @@
-#include <iostream>
-#include <vector>
-#include "User.h"
+
+#include "UserManager.h"
 using namespace std;
 
 class AdressBook {
 
-	int idLoggedUser;
-
-	string userDataBaseName;
-
-	vector <User> Users;
-
-	
-	User userDataGathering();
-	string getWholeLine();
-	void saveNewUser(User newUser);
-	string mergeUserLine(User data);
-	bool checkIfLoginIsNotUnique(string login);
+	UserManager userManager;
 
 public:
-	AdressBook();
-	void insertNewUser();
+	void registration();
+
 };

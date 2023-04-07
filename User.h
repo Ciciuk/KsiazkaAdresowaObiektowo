@@ -1,3 +1,7 @@
+#ifndef USER_H
+#define USER_H
+
+
 #include <iostream>
 
 using namespace std;
@@ -8,11 +12,13 @@ class User {
 	string userPassword;
 
 public:
-	void settId(int newId);
-	void settLogin(string newLogin);
-	void settPassword(string newPassword);
+	void setId(int newId);
+	void setLogin(string newLogin);
+	void setPassword(string newPassword);
 
-	int gettId();
-	string gettLogin();
-	string gettPassword();
+	int getId();
+	string getLogin();
+	string getPassword();
 };
+
+#endif
