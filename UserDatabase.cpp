@@ -1,7 +1,6 @@
 #include "UserDatabase.h"
 
-UserDatabase::UserDatabase() {
-	userDataBaseName = "uzytkownicy.txt";
+UserDatabase::UserDatabase(string USERDATABASENAME) : userDataBaseName(USERDATABASENAME){
 }
 
 void UserDatabase::saveNewUserInDataBase(User newUser) {

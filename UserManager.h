@@ -13,7 +13,8 @@ using namespace std;
 
 class UserManager {
 	vector <User> users;
-	UserDatabase userDatabase;
+	string userDatabaseName;
+	UserDatabase userDatabase(userDatabaseName);
 
 	User newUser;
 	User loggedUser; 
@@ -27,6 +28,7 @@ class UserManager {
 	bool checkLoginAndPassword();
 
 public:
+	UserManager(string userDatabaseName);
 	void loadUsersFromDataBase();
 	void newUserRegistration();
 	void logginng();
