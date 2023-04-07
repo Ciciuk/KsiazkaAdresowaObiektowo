@@ -13,8 +13,7 @@ using namespace std;
 
 class UserManager {
 	vector <User> users;
-	string userDatabaseName;
-	UserDatabase userDatabase(userDatabaseName);
+	UserDatabase userDatabase;
 
 	User newUser;
 	User loggedUser; 

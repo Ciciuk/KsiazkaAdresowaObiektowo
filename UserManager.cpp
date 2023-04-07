@@ -9,6 +9,7 @@
 
 UserManager::UserManager(string userDatabaseName) : userDatabase(userDatabaseName) {
 }
+
 void UserManager::loadUsersFromDataBase() {
 	users = userDatabase.loadUsersFromDataBase();
 }

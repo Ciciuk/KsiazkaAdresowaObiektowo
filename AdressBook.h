@@ -4,10 +4,10 @@ using namespace std;
 
 class AdressBook {
 
-	UserManager userManager();
+	UserManager userManager;
 
 public:
-	AdressBook(string userDatabaseName) ;
+	AdressBook(string userDatabaseName);
 	void registration();
 	void logging();
 
