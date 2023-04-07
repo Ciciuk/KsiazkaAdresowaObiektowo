@@ -4,34 +4,100 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>27</x>
-      <y>297</y>
+      <x>171</x>
+      <y>279</y>
       <w>270</w>
       <h>270</h>
     </coordinates>
-    <panel_attributes>KsiazkaAdresowa
+    <panel_attributes>AdressBook
 -----------------------------------------------------------------
-idLoggedUser : integer
+-idLoggedUser : integer
+
+
 ------------------------------------------------------
-insertNewUser() : void
-checkPaswordAndReturnUserId() : int
-internalMenu() : void</panel_attributes>
+
+
+
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>342</x>
-      <y>297</y>
+      <x>585</x>
+      <y>279</y>
       <w>225</w>
       <h>270</h>
     </coordinates>
     <panel_attributes>User
 -----------------------------------------------------------------
-userId : integer
-userLogin : string
-userPassword : string
+-userId : integer
+-userLogin : string
+-userPassword : string
 </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1053</x>
+      <y>333</y>
+      <w>279</w>
+      <h>243</h>
+    </coordinates>
+    <panel_attributes>UserManager
+-------------------------------------------------------
+-Users : vector &lt;User&gt; 
+--------------------------------------------
++newUserRegistration() : void
++loggingAndUserIdReturn : integer
++userDataGathering() : User
+-mergeUserLine(User data) : string
+-checkIfLoginIsNotUnique(string login) : bool</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>531</x>
+      <y>621</y>
+      <w>288</w>
+      <h>243</h>
+    </coordinates>
+    <panel_attributes>UserDatabase
+---------------------------------------------------
+-userDataBaseName : string 
+------------------------------------
++saveNewUserInDataBase(User newUser) : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>198</x>
+      <y>666</y>
+      <w>153</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>AditionalMethods
+------------------------
++getWholeLine() : string</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>243</x>
+      <y>63</y>
+      <w>90</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>Trrasch
+
+
+checkPaswordAndReturnUserId() : int
+internalMenu() : void
+AdressBook()</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>

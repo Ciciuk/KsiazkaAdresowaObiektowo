@@ -6,8 +6,9 @@ using namespace std;
 
 int main() {
 	AdressBook adressBook;
-	adressBook.insertNewUser();
-	adressBook.insertNewUser();
-	adressBook.insertNewUser();
+	adressBook.registration();
+	adressBook.registration();
+	adressBook.registration();
+
 	return 0;
 }
