@@ -4,6 +4,7 @@
 
 #include <string>
 #include <fstream>
+#include <vector>
 
 #include "User.h"
 
@@ -17,8 +18,7 @@ class UserDatabase {
 
 public:
 	UserDatabase();
-
 	void saveNewUserInDataBase(User newUser);
-
+	vector <User> loadUsersFromDataBase();
 };
-#endif
+#endif   

@@ -7,6 +7,8 @@ class AdressBook {
 	UserManager userManager;
 
 public:
+	AdressBook();
 	void registration();
+	void logging();
 
 };
