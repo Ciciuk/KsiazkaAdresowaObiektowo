@@ -8,10 +8,13 @@
 
 
 
+void UserManager::loadUsersFromDataBase() {
+	users = userDatabase.loadUsersFromDataBase();
+}
 
 void UserManager::newUserRegistration() {
-	//User user;
-
+	system("cls");
+	
 	userDataGathering();
 
 	if (users.empty())
@@ -25,9 +28,9 @@ void UserManager::newUserRegistration() {
 }
 
 void UserManager::userDataGathering() {
-	//User user;
 	string login;
 
+	cout << "----------Rejestracja----------- " << endl;
 	do {
 		cout << "Podaj login: " << endl;
 		login = AditionalMethods::getWholeLine();
@@ -35,8 +38,6 @@ void UserManager::userDataGathering() {
 	newUser.setLogin(login);
 	cout << "Podaj haslo: " << endl;
 	newUser.setPassword(AditionalMethods::getWholeLine());
-
-	//return user;
 }
 
 bool UserManager::checkIfLoginIsNotUnique(string login) {
@@ -49,4 +50,74 @@ bool UserManager::checkIfLoginIsNotUnique(string login) {
 	}
 
 	return false;
+}
+
+bool UserManager::checkLoginAndPassword() {
+	system("cls");
+	string login;
+
+	if (checkIfEmptyUsers())
+		return false;
+
+	cout << "----------Logowanie----------- " << endl;
+	cout << "Podaj login:  " << endl;
+	login = AditionalMethods::getWholeLine();
+
+	for (vector <User>::iterator i = users.begin(); i < users.end(); i++) {
+		if (login == i->getLogin()) {
+			if (checkPassword(i)) {
+				loggedUser = *i;
+				return true;
+			}
+			else
+				return false;
+		}
+	}
+
+	cout << "Brak loginu w bazie danych:  ";
+	system("pause");
+
+	return false;
+}
+
+bool  UserManager::checkIfEmptyUsers() {
+	if (users.empty()) {
+		cout << "Brak zarejestrowanych uzytkownikow ";
+		system("pause");;
+		return true;
+	}
+
+	return false;
+}
+
+bool UserManager::checkPassword(vector <User>::iterator i) {
+	string password;
+
+	for (int j = 3; j > 0; j--) {
+		cout << "Pozostalo Ci: " << j << " prob" << endl;
+		cout << "Podaj haslo: " << endl;
+		password = AditionalMethods::getWholeLine();
+		if (password == i->getPassword()) {
+			cout << "Gratuluje, poprawne haslo" << endl;
+			system("pause");;
+			return true;
+		}
+		else {
+			cout << "Nieprawidlowe haslo" << endl;
+			cout << endl;
+			system("pause");;
+		}
+	}
+
+	cout << "Wykorzystano wszystkie proby, nastapi przekierowanie na ekran glowny" << endl;
+	system("pause");;
+
+	return false;
+}
+
+void UserManager::logginng() {
+	if (checkLoginAndPassword())
+		cout << "Uzytkownik zalogowany ";
+	else
+		cout << "Nie udalo sie zalogowaæ! ";
 }
