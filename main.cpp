@@ -9,9 +9,9 @@ int main() {
 	//adressBook.registration();
 	//adressBook.registration();
 	adressBook.logging();
-	adressBook.logging();
+	//adressBook.logging();
 	//adressBook.registration();
-	adressBook.logging();
+	//adressBook.logging();
 
 
 	return 0;

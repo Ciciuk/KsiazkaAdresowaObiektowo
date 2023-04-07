@@ -1,5 +1,7 @@
 
 #include "UserManager.h"
+#include "ContactManager.h"
+
 using namespace std;
 
 class AdressBook {

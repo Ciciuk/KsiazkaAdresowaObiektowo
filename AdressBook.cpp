@@ -8,6 +8,10 @@ void AdressBook::registration() {
 	userManager.newUserRegistration();
 }
 void AdressBook::logging() {
-	userManager.logginng();
+	if (userManager.logginng()) {
+		ContactManager contactManager("adresaci.txt", userManager.getLoggedUserId());
+		contactManager.loadContactsFromDataBase();
+		contactManager.displayAllContacts();
+	}
 }
 

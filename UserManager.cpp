@@ -1,13 +1,12 @@
 #include "UserManager.h"
 
-#include <iostream>
-#include <string>
-#include <vector>
-#include <fstream>
-#include <cstdlib>
 
 
 UserManager::UserManager(string userDatabaseName) : userDatabase(userDatabaseName) {
+}
+
+int UserManager::getLoggedUserId() {
+	return loggedUser.getId();
 }
 
 void UserManager::loadUsersFromDataBase() {
@@ -32,7 +31,7 @@ void UserManager::newUserRegistration() {
 void UserManager::userDataGathering() {
 	string login;
 
-	cout << "----------Rejestracja----------- " << endl;
+	cout << setw(20) << "----------Rejestracja----------- " << endl;
 	do {
 		cout << "Podaj login: " << endl;
 		login = AditionalMethods::getWholeLine();
@@ -61,7 +60,7 @@ bool UserManager::checkLoginAndPassword() {
 	if (checkIfEmptyUsers())
 		return false;
 
-	cout << "----------Logowanie----------- " << endl;
+	cout << setw(20) << "----------Logowanie----------- " << endl;
 	cout << "Podaj login:  " << endl;
 	login = AditionalMethods::getWholeLine();
 
@@ -117,9 +116,16 @@ bool UserManager::checkPassword(vector <User>::iterator i) {
 	return false;
 }
 
-void UserManager::logginng() {
-	if (checkLoginAndPassword())
+bool UserManager::logginng() {
+	if (checkLoginAndPassword()) {
 		cout << "Uzytkownik zalogowany ";
-	else
+		system("pause");
+		return true;
+	}
+	else {
 		cout << "Nie udalo sie zalogowaæ! ";
+		system("pause");
+		return false;
+	}
+		
 }

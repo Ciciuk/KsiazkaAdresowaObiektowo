@@ -1,9 +1,14 @@
-#ifndef USERMENAGER_H
-#define USERMENAGER_H
+#ifndef USERMANAGER_H
+#define USERMANAGER_H
 
 
 #include <iostream>
 #include <vector>
+#include <string>
+#include <fstream>
+#include <cstdlib>
+#include <iomanip>
+
 
 #include "User.h"
 #include "AditionalMethods.h"
@@ -28,9 +33,12 @@ class UserManager {
 
 public:
 	UserManager(string userDatabaseName);
+
+	int getLoggedUserId();
+
 	void loadUsersFromDataBase();
 	void newUserRegistration();
-	void logginng();
+	bool logginng();
 };
 
 #endif
