@@ -1,8 +1,9 @@
 #include "AdressBook.h"
 
-AdressBook::AdressBook() {
+AdressBook::AdressBook(string userDatabaseName) : userManager(userDatabaseName) {
 	userManager.loadUsersFromDataBase();
 }
+
 void AdressBook::registration() {
 	userManager.newUserRegistration();
 }

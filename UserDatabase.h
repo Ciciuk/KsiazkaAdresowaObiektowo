@@ -11,13 +11,13 @@
 using namespace std;
 
 class UserDatabase {
-	string userDataBaseName;
+	const string userDataBaseName;
 	fstream userDataBase;
 
 	string mergeUserLine(User data);
 
 public:
-	UserDatabase();
+	UserDatabase(string USERDATABASENAME);
 	void saveNewUserInDataBase(User newUser);
 	vector <User> loadUsersFromDataBase();
 };

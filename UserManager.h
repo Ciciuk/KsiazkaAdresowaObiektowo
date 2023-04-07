@@ -27,6 +27,7 @@ class UserManager {
 	bool checkLoginAndPassword();
 
 public:
+	UserManager(string userDatabaseName);
 	void loadUsersFromDataBase();
 	void newUserRegistration();
 	void logginng();

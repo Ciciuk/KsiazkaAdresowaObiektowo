@@ -7,7 +7,7 @@ class AdressBook {
 	UserManager userManager;
 
 public:
-	AdressBook();
+	AdressBook(string userDatabaseName);
 	void registration();
 	void logging();
 
