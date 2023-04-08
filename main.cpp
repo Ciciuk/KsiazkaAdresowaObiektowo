@@ -5,10 +5,10 @@
 using namespace std;
 
 int main() {
-	AdressBook adressBook("uzytkownicy.txt");
+	AdressBook adressBook("uzytkownicy.txt", "adresaci.txt");
 	//adressBook.registration();
 	//adressBook.registration();
-	adressBook.logging();
+	adressBook.loginMenu();
 	//adressBook.logging();
 	//adressBook.registration();
 	//adressBook.logging();

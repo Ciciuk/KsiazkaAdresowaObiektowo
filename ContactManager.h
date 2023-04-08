@@ -18,16 +18,16 @@ class ContactManager {
 	Contact newContact;
 
 	void contactDataGathering();
-	bool  checkIfEmptyContacts();
+	bool checkIfEmptyContacts();
 	void displayRecord(vector <Contact>::iterator placeInStructureToDisplay);
 
 public:
+	ContactManager(string contactDatabaseName);
 	ContactManager(string contactDatabaseName, int userId);
 
+	void loadContactsFromDataBase(int userId);
 	void displayAllContacts();
-	void loadContactsFromDataBase();
 	void insertNewContact();
-
 };
 
 #endif

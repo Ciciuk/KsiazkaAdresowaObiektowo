@@ -8,11 +8,15 @@
 #include <iomanip>
 
 
-ContactManager::ContactManager(string contactDatabaseName, int userId) : contactDatabase(contactDatabaseName,userId) {
+ContactManager::ContactManager(string contactDatabaseName) : contactDatabase(contactDatabaseName) {
 }
 
-void ContactManager::loadContactsFromDataBase() {
-	contacts = contactDatabase.loadContactsFromDataBase();
+ContactManager::ContactManager(string contactDatabaseName, int userId) : contactDatabase(contactDatabaseName,userId) {
+	contacts = contactDatabase.loadContactsFromDataBase(userId);
+}
+
+void ContactManager::loadContactsFromDataBase(int userId) {
+	contacts = contactDatabase.loadContactsFromDataBase(userId);
 }
 void ContactManager::insertNewContact() {
 	contactDataGathering();

@@ -7,10 +7,15 @@ using namespace std;
 class AdressBook {
 
 	UserManager userManager;
+	ContactManager contactManager;
 
+	void  displayMainlMenu();
+	void  displayInternalMenu();
+	char getOneChar();
+	void internalMenu();
 public:
-	AdressBook(string userDatabaseName);
+	AdressBook(string userDatabaseName, string contactDatabaseName);
 	void registration();
 	void logging();
-
+	void loginMenu();
 };

@@ -1,5 +1,7 @@
 #include "ContactDatabase.h"
 
+ContactDatabase::ContactDatabase(string CONTACTDATABASENAME) : contactDataBaseName(CONTACTDATABASENAME) {
+}
 ContactDatabase::ContactDatabase(string CONTACTDATABASENAME, int userId) : contactDataBaseName(CONTACTDATABASENAME) {
 	currentUserId = userId;
 }
@@ -36,14 +38,12 @@ string ContactDatabase::mergeContactLine(Contact data) {
 	return line;
 }
 
-vector <Contact> ContactDatabase::loadContactsFromDataBase() {
+vector <Contact> ContactDatabase::loadContactsFromDataBase(int userId) {
 	string line,temp;
 	Contact data;
 	vector <Contact> contacts;
-	//int lastId = 0;
-
 	contactDataBase.open("adresaci.txt", ios::in);
-
+	currentUserId = userId;
 	while (getline(contactDataBase, line, '|')) {
 		if (line == "\n")
 			break;

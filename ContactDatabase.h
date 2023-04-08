@@ -20,13 +20,14 @@ class ContactDatabase {
 	string mergeContactLine(Contact data);
 
 public:
-	ContactDatabase(string CONTACTDATABASENAME, int userId);
+	ContactDatabase(string CONTACTDATABASENAME);
+	ContactDatabase(string CONTACTDATABASENAME, int userId); // narazie nie uzywane
 
 	int getLastContactId();
 	int getCurrentUserId();
 	void setLastContactId(int newLastContactId);
 
 	void saveNewContactInDataBase(Contact newUser);
-	vector <Contact> loadContactsFromDataBase();
+	vector <Contact> loadContactsFromDataBase(int userId);
 };
 #endif   
