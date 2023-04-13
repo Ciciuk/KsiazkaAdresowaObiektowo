@@ -5,17 +5,23 @@
     <id>UMLClass</id>
     <coordinates>
       <x>576</x>
-      <y>549</y>
+      <y>558</y>
       <w>297</w>
       <h>234</h>
     </coordinates>
     <panel_attributes>AdressBook
 -----------------------------------------------------------------
 -userManager : UserManager
+-contactManager : ContactManager
 ----------------------------------------------------------
 +AdressBook()
+-displayMainMenu() : void
+-displayInternalMenu() : void
+-getOneChar() : void
+-internalMenu() : void
 +registration() : void
 +logging() : void
++loginMenu() : void
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -23,7 +29,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>459</x>
-      <y>0</y>
+      <y>9</y>
       <w>225</w>
       <h>270</h>
     </coordinates>
@@ -32,14 +38,14 @@
 -userId : integer
 -userLogin : string
 -userPassword : string
-</panel_attributes>
+-------------------------------------------------------</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>774</x>
-      <y>0</y>
+      <y>9</y>
       <w>279</w>
       <h>270</h>
     </coordinates>
@@ -50,16 +56,35 @@
 -newUser : User
 -loggedUser : User
 ------------------------------------------------------------------
-+loadUsersFromDataBase : void
-+newUserRegistration() : void
-+logging : void
-+
--checkIfLoginIsNotUnique() : bool
++UserManager()
 -userDataGathering() : void
+-checkIfLoginIsNotUnique() : bool
 -checkIfEmptyUsers() : bool
 -checkPasword() : bool
 -checkLoginAndPassword() : bool
-changePassword () void?????????????????
++loadUsersFromDataBase : void
++newUserRegistration() : void
++logging : bool
++changePassword() : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>72</x>
+      <y>9</y>
+      <w>288</w>
+      <h>279</h>
+    </coordinates>
+    <panel_attributes>UserDatabase
+--------------------------------------------------------------------------------------------------------------------------------------------
+-userDataBaseName : string 
+---------------------------------------------------------------------------------------------------------------------------------------------
++UserDatabase()
+-mergeUserLine() : string
++saveNewUserInDataBase() : void
++loadUsersFromDataBase() : vector &lt;User&gt;
++saveUserAfterPaswordChange() : void
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -67,33 +92,12 @@ changePassword () void?????????????????
     <id>UMLClass</id>
     <coordinates>
       <x>72</x>
-      <y>0</y>
-      <w>288</w>
-      <h>279</h>
-    </coordinates>
-    <panel_attributes>UserDatabase
---------------------------------------------------------------------------------------------------------------------------------------------
--userDataBaseName : string 
--userDataBase : fstream
----------------------------------------------------------------------------------------------------------------------------------------------
-+UserDatabase()
-+saveNewUserInDataBase() : void
-+loadUsersFromDataBase() : vector &lt;User&gt;
--mergeUserLine() : string
-+saveNewContactInDataBase : void
-+loadContactsFromDataBase : vector &lt;Contact&gt;
--mergeContactLine() : string</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>72</x>
-      <y>621</y>
+      <y>630</y>
       <w>153</w>
       <h>126</h>
     </coordinates>
     <panel_attributes>AditionalMethods
+-------------------------------------------------------
 ------------------------------------
 +getWholeLine() : string</panel_attributes>
     <additional_attributes/>
@@ -102,19 +106,24 @@ changePassword () void?????????????????
     <id>UMLClass</id>
     <coordinates>
       <x>774</x>
-      <y>288</y>
+      <y>297</y>
       <w>279</w>
       <h>243</h>
     </coordinates>
     <panel_attributes>ContactManager
 ----------------------------------------------------------------------
-
+-contacts : vector&lt;Contact&gt;
+-contactDatabase ContactDatabase
+-newContact Contact
 -----------------------------------------------------------------------
-loadContactsFromDataBase() : void
-contactDataGathering() : User
++ContactManager()
+-contactDataGathering() : void
+-checkIfEmptyContacts() : bool
+-displayRecord() : void
++loadContactsFromDataBase() : void
++displayAllContacts() : void
++insertNewContact() : void
 
-insertNewContact() : integer
-displayAllContacts() : void
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -122,33 +131,34 @@ displayAllContacts() : void
     <id>UMLClass</id>
     <coordinates>
       <x>459</x>
-      <y>288</y>
-      <w>225</w>
+      <y>297</y>
+      <w>234</w>
       <h>243</h>
     </coordinates>
     <panel_attributes>Contact
-----------------------------------------------
+-------------------------------------------------------
 -contactId : integer
--contactUserAssignmentId : integer
+-userId : integer
 -contactName : string
 -contactSurname : string
 -contactPhoneNumber : string
 -contactEmail : string
--contactAdress : string</panel_attributes>
+-contactAdress : string
+-------------------------------------------------------
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>72</x>
-      <y>297</y>
+      <y>306</y>
       <w>288</w>
       <h>234</h>
     </coordinates>
     <panel_attributes>ContactDatabase
 --------------------------------------------------------------------------------------------------------------------------------------------
 -contactDataBaseName : string 
--contactDataBase : fstream
 -lastContactId : integer
 -currentUserId : integer
 ---------------------------------------------------------------------------------------------------------------------------------------------

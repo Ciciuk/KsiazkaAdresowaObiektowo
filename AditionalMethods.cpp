@@ -2,7 +2,8 @@
 
 using namespace std;
 
- string AditionalMethods::getWholeLine() {
+string AditionalMethods::getWholeLine()
+{
 	string line;
 
 	cin.sync();
@@ -10,5 +11,3 @@ using namespace std;
 
 	return line;
 }
-
- 
