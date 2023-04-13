@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "xstring": "cpp"
+    },
+    "[cpp]": {
+        "editor.defaultFormatter": "ms-vscode.cpptools",
+        "editor.formatOnPaste": true
+    }
+}

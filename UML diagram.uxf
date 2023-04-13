@@ -4,26 +4,32 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>18</x>
-      <y>216</y>
-      <w>270</w>
-      <h>270</h>
+      <x>576</x>
+      <y>558</y>
+      <w>297</w>
+      <h>234</h>
     </coordinates>
     <panel_attributes>AdressBook
 -----------------------------------------------------------------
 -userManager : UserManager
-------------------------------------------------------
+-contactManager : ContactManager
+----------------------------------------------------------
 +AdressBook()
+-displayMainMenu() : void
+-displayInternalMenu() : void
+-getOneChar() : void
+-internalMenu() : void
 +registration() : void
 +logging() : void
++loginMenu() : void
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>432</x>
-      <y>216</y>
+      <x>459</x>
+      <y>9</y>
       <w>225</w>
       <h>270</h>
     </coordinates>
@@ -32,82 +38,134 @@
 -userId : integer
 -userLogin : string
 -userPassword : string
-</panel_attributes>
+-------------------------------------------------------</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>774</x>
-      <y>216</y>
+      <y>9</y>
       <w>279</w>
-      <h>243</h>
+      <h>270</h>
     </coordinates>
     <panel_attributes>UserManager
--------------------------------------------------------
+------------------------------------------------------------------
 -users : vector &lt;User&gt; 
 -userDatabase : UserDatabase
 -newUser : User
 -loggedUser : User
---------------------------------------------
+------------------------------------------------------------------
++UserManager()
+-userDataGathering() : void
+-checkIfLoginIsNotUnique() : bool
+-checkIfEmptyUsers() : bool
+-checkPasword() : bool
+-checkLoginAndPassword() : bool
 +loadUsersFromDataBase : void
 +newUserRegistration() : void
-+logging : void
-+
--checkIfLoginIsNotUnique() : bool
--userDataGathering() : void
--checkIfEmptyUsers() : bool
--checkPasword : bool
--checkLoginAndPassword() : bool
++logging : bool
++changePassword() : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>72</x>
+      <y>9</y>
+      <w>288</w>
+      <h>279</h>
+    </coordinates>
+    <panel_attributes>UserDatabase
+--------------------------------------------------------------------------------------------------------------------------------------------
+-userDataBaseName : string 
+---------------------------------------------------------------------------------------------------------------------------------------------
++UserDatabase()
+-mergeUserLine() : string
++saveNewUserInDataBase() : void
++loadUsersFromDataBase() : vector &lt;User&gt;
++saveUserAfterPaswordChange() : void
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>378</x>
-      <y>558</y>
-      <w>288</w>
-      <h>243</h>
-    </coordinates>
-    <panel_attributes>UserDatabase
----------------------------------------------------
--userDataBaseName : string 
--userDataBase : fstream
-------------------------------------
-+UserDatabase()
-+saveNewUserInDataBase() : void
-+loadUsersFromDataBase() : vector &lt;User&gt;
--mergeUserLine() : string</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>45</x>
-      <y>603</y>
+      <x>72</x>
+      <y>630</y>
       <w>153</w>
       <h>126</h>
     </coordinates>
     <panel_attributes>AditionalMethods
-------------------------
+-------------------------------------------------------
+------------------------------------
 +getWholeLine() : string</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>90</x>
-      <y>0</y>
-      <w>90</w>
-      <h>27</h>
+      <x>774</x>
+      <y>297</y>
+      <w>279</w>
+      <h>243</h>
     </coordinates>
-    <panel_attributes>Trrasch
+    <panel_attributes>ContactManager
+----------------------------------------------------------------------
+-contacts : vector&lt;Contact&gt;
+-contactDatabase ContactDatabase
+-newContact Contact
+-----------------------------------------------------------------------
++ContactManager()
+-contactDataGathering() : void
+-checkIfEmptyContacts() : bool
+-displayRecord() : void
++loadContactsFromDataBase() : void
++displayAllContacts() : void
++insertNewContact() : void
 
-
-checkPaswordAndReturnUserId() : int
-internalMenu() : void
 </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>459</x>
+      <y>297</y>
+      <w>234</w>
+      <h>243</h>
+    </coordinates>
+    <panel_attributes>Contact
+-------------------------------------------------------
+-contactId : integer
+-userId : integer
+-contactName : string
+-contactSurname : string
+-contactPhoneNumber : string
+-contactEmail : string
+-contactAdress : string
+-------------------------------------------------------
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>72</x>
+      <y>306</y>
+      <w>288</w>
+      <h>234</h>
+    </coordinates>
+    <panel_attributes>ContactDatabase
+--------------------------------------------------------------------------------------------------------------------------------------------
+-contactDataBaseName : string 
+-lastContactId : integer
+-currentUserId : integer
+---------------------------------------------------------------------------------------------------------------------------------------------
++ContactDatabase()
++saveNewContactInDataBase : void
++loadContactsFromDataBase : vector &lt;Contact&gt;
+-mergeContactLine() : string</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>

@@ -1,125 +1,147 @@
 #include "UserManager.h"
 
-#include <iostream>
-#include <string>
-#include <vector>
-#include <fstream>
-#include <cstdlib>
-
-
 UserManager::UserManager(string userDatabaseName) : userDatabase(userDatabaseName) {
 }
 
+int UserManager::getLoggedUserId() {
+    return loggedUser.getId();
+}
+
 void UserManager::loadUsersFromDataBase() {
-	users = userDatabase.loadUsersFromDataBase();
+    users = userDatabase.loadUsersFromDataBase();
 }
 
 void UserManager::newUserRegistration() {
-	system("cls");
-	
-	userDataGathering();
+    system("cls");
 
-	if (users.empty())
-		newUser.setId(1);
-	else
-		newUser.setId(users.back().getId() + 1);
+    userDataGathering();
 
-	users.push_back(newUser);
-	userDatabase.saveNewUserInDataBase(newUser);
-	cout << "Rejestracja zakonczona" << endl << endl;
+    if (users.empty())
+        newUser.setId(1);
+    else
+        newUser.setId(users.back().getId() + 1);
+
+    users.push_back(newUser);
+    userDatabase.saveNewUserInDataBase(newUser);
+
+    cout << "Rejestracja zakonczona" << endl
+         << endl;
 }
 
 void UserManager::userDataGathering() {
-	string login;
+    string login;
 
-	cout << "----------Rejestracja----------- " << endl;
-	do {
-		cout << "Podaj login: " << endl;
-		login = AditionalMethods::getWholeLine();
-	} while (checkIfLoginIsNotUnique(login));
-	newUser.setLogin(login);
-	cout << "Podaj haslo: " << endl;
-	newUser.setPassword(AditionalMethods::getWholeLine());
+    cout << setw(20) << "----------Rejestracja----------- " << endl;
+
+    do {
+        cout << "Podaj login: " << endl;
+        login = AditionalMethods::getWholeLine();
+    } while (checkIfLoginIsNotUnique(login));
+    newUser.setLogin(login);
+
+    cout << "Podaj haslo: " << endl;
+    newUser.setPassword(AditionalMethods::getWholeLine());
 }
 
 bool UserManager::checkIfLoginIsNotUnique(string login) {
-	for (int i = 0; i < users.size(); i++) {
-		if (users[i].getLogin() == login) {
-			cout << "Login juz istnieje, podaj inny login" << endl;
-			system("pause");
-			return true;
-		}
-	}
+    for (int i = 0; i < users.size(); i++) {
+        if (users[i].getLogin() == login) {
+            cout << "Login juz istnieje, podaj inny login" << endl;
+            system("pause");
+            return true;
+        }
+    }
 
-	return false;
+    return false;
 }
 
 bool UserManager::checkLoginAndPassword() {
-	system("cls");
-	string login;
+    system("cls");
+    string login;
 
-	if (checkIfEmptyUsers())
-		return false;
+    if (checkIfEmptyUsers())
+        return false;
 
-	cout << "----------Logowanie----------- " << endl;
-	cout << "Podaj login:  " << endl;
-	login = AditionalMethods::getWholeLine();
+    cout << setw(20) << "----------Logowanie----------- " << endl;
+    cout << "Podaj login:  " << endl;
+    login = AditionalMethods::getWholeLine();
 
-	for (vector <User>::iterator i = users.begin(); i < users.end(); i++) {
-		if (login == i->getLogin()) {
-			if (checkPassword(i)) {
-				loggedUser = *i;
-				return true;
-			}
-			else
-				return false;
-		}
-	}
+    for (vector<User>::iterator i = users.begin(); i < users.end(); i++) {
+        if (login == i->getLogin()) {
+            if (checkPassword(i)) {
+                loggedUser = *i;
+                return true;
+            } else
+                return false;
+        }
+    }
 
-	cout << "Brak loginu w bazie danych:  ";
-	system("pause");
+    cout << "Brak loginu w bazie danych:  ";
+    system("pause");
 
-	return false;
+    return false;
 }
 
-bool  UserManager::checkIfEmptyUsers() {
-	if (users.empty()) {
-		cout << "Brak zarejestrowanych uzytkownikow ";
-		system("pause");;
-		return true;
-	}
+bool UserManager::checkIfEmptyUsers() {
+    if (users.empty()) {
+        cout << "Brak zarejestrowanych uzytkownikow ";
+        system("pause");
+        return true;
+    }
 
-	return false;
+    return false;
 }
 
-bool UserManager::checkPassword(vector <User>::iterator i) {
-	string password;
+bool UserManager::checkPassword(vector<User>::iterator i) {
+    string password;
 
-	for (int j = 3; j > 0; j--) {
-		cout << "Pozostalo Ci: " << j << " prob" << endl;
-		cout << "Podaj haslo: " << endl;
-		password = AditionalMethods::getWholeLine();
-		if (password == i->getPassword()) {
-			cout << "Gratuluje, poprawne haslo" << endl;
-			system("pause");;
-			return true;
-		}
-		else {
-			cout << "Nieprawidlowe haslo" << endl;
-			cout << endl;
-			system("pause");;
-		}
-	}
+    for (int j = 3; j > 0; j--) {
+        cout << "Pozostalo Ci: " << j << " prob" << endl;
+        cout << "Podaj haslo: " << endl;
+        password = AditionalMethods::getWholeLine();
+        if (password == i->getPassword()) {
+            cout << "Gratuluje, poprawne haslo" << endl;
+            system("pause");
+            return true;
+        } else {
+            cout << "Nieprawidlowe haslo" << endl;
+            cout << endl;
+            system("pause");
+        }
+    }
 
-	cout << "Wykorzystano wszystkie proby, nastapi przekierowanie na ekran glowny" << endl;
-	system("pause");;
+    cout << "Wykorzystano wszystkie proby, nastapi przekierowanie na ekran glowny" << endl;
+    system("pause");
 
-	return false;
+    return false;
 }
 
-void UserManager::logginng() {
-	if (checkLoginAndPassword())
-		cout << "Uzytkownik zalogowany ";
-	else
-		cout << "Nie udalo sie zalogowaæ! ";
+bool UserManager::logginng() {
+    if (checkLoginAndPassword()) {
+        cout << "Uzytkownik zalogowany ";
+        system("pause");
+        return true;
+    } else {
+        cout << "Nie udalo sie zalogowac! ";
+        system("pause");
+        return false;
+    }
+}
+
+void UserManager::changePassword() {
+    vector<User>::iterator i;
+    for (i = users.begin(); i < users.end(); i++) {
+        if (i->getId() == loggedUser.getId())
+            break;
+    }
+
+    cout << setw(20) << "----------Zmiana hasla----------- " << endl;
+    cout << "Podaj nowe haslo: ";
+
+    i->setPassword(AditionalMethods::getWholeLine());
+
+    userDatabase.saveUserAfterPaswordChange(users);
+
+    cout << "Haslo zostalo zmienione: ";
+    system("pause");
 }
