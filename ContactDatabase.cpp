@@ -1,14 +1,5 @@
 #include "ContactDatabase.h"
 
-ContactDatabase::ContactDatabase(string CONTACTDATABASENAME) : contactDataBaseName(CONTACTDATABASENAME) {
-    currentUserId = 0;
-    lastContactId = 0;
-}
-
-ContactDatabase::ContactDatabase(string CONTACTDATABASENAME, int userId) : contactDataBaseName(CONTACTDATABASENAME) {
-    currentUserId = userId;
-}
-
 int ContactDatabase::getLastContactId() {
     return lastContactId;
 }

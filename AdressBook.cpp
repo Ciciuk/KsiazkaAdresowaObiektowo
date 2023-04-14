@@ -1,9 +1,5 @@
 #include "AdressBook.h"
 
-AdressBook::AdressBook(string userDatabaseName, string contactDatabaseName) : userManager(userDatabaseName), contactManager(contactDatabaseName) {
-    userManager.loadUsersFromDataBase();
-}
-
 void AdressBook::registration() {
     userManager.newUserRegistration();
 }
@@ -20,7 +16,7 @@ void AdressBook::loginMenu() {
     while (1) {
         system("cls");
         displayMainMenu();
-        menuChoice = getOneChar();
+        menuChoice = AditionalMethods::getOneChar();
         switch (menuChoice) {
             case '1':
                 logging();
@@ -45,7 +41,7 @@ void AdressBook::internalMenu() {
     while (1) {
         system("cls");
         displayInternalMenu();
-        menuChoice = getOneChar();
+        menuChoice = AditionalMethods::getOneChar();
         switch (menuChoice) {
             case '1':
                 contactManager.insertNewContact();
@@ -91,21 +87,4 @@ void AdressBook::displayInternalMenu() {
     // cout << "6. Edytuj adresata" << endl;
     cout << "7. Zmien haslo" << endl;
     cout << "9. Wyloguj sie" << endl;
-}
-
-char AdressBook::getOneChar() {
-    string input = "";
-    char sign = {0};
-
-    while (true) {
-        cin.sync();
-        getline(cin, input);
-        if (input.length() == 1) {
-            sign = input[0];
-            break;
-        }
-        cout << "To nie jest pojedynczy znak. Wpisz ponownie." << endl;
-    }
-
-    return sign;
 }

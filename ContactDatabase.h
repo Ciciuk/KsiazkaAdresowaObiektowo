@@ -18,8 +18,10 @@ class ContactDatabase {
     string mergeContactLine(Contact data);
 
    public:
-    ContactDatabase(string CONTACTDATABASENAME);
-    ContactDatabase(string CONTACTDATABASENAME, int userId);  // narazie nie uzywane
+    ContactDatabase(string CONTACTDATABASENAME) : contactDataBaseName(CONTACTDATABASENAME) {
+        currentUserId = 0;
+        lastContactId = 0;
+    }
 
     int getLastContactId();
     int getCurrentUserId();

@@ -5,3 +5,7 @@ KsiazkaAdresowaObiektowo.sln
 KsiazkaAdresowaObiektowo.vcxproj
 KsiazkaAdresowaObiektowo.vcxproj.filters
 KsiazkaAdresowaObiektowo.vcxproj.user
+.vscode/c_cpp_properties.json
+.vscode/launch.json
+build/
+.vscode/settings.json

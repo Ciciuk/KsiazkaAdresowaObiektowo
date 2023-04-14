@@ -15,7 +15,8 @@ class UserDatabase {
     string mergeUserLine(User data);
 
    public:
-    UserDatabase(string USERDATABASENAME);
+    UserDatabase(string USERDATABASENAME) : userDataBaseName(USERDATABASENAME) {
+    }
     void saveNewUserInDataBase(User newUser);
     vector<User> loadUsersFromDataBase();
     void saveUserAfterPaswordChange(vector<User> users);

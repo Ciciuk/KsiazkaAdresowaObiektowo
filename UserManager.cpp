@@ -1,8 +1,5 @@
 #include "UserManager.h"
 
-UserManager::UserManager(string userDatabaseName) : userDatabase(userDatabaseName) {
-}
-
 int UserManager::getLoggedUserId() {
     return loggedUser.getId();
 }
@@ -24,8 +21,8 @@ void UserManager::newUserRegistration() {
     users.push_back(newUser);
     userDatabase.saveNewUserInDataBase(newUser);
 
-    cout << "Rejestracja zakonczona" << endl
-         << endl;
+    cout << "Rejestracja zakonczona" << endl;
+    system("pause");
 }
 
 void UserManager::userDataGathering() {
@@ -44,7 +41,7 @@ void UserManager::userDataGathering() {
 }
 
 bool UserManager::checkIfLoginIsNotUnique(string login) {
-    for (int i = 0; i < users.size(); i++) {
+    for (size_t i = 0; i < users.size(); i++) {
         if (users[i].getLogin() == login) {
             cout << "Login juz istnieje, podaj inny login" << endl;
             system("pause");
@@ -134,7 +131,8 @@ void UserManager::changePassword() {
         if (i->getId() == loggedUser.getId())
             break;
     }
-
+    
+    system("cls");
     cout << setw(20) << "----------Zmiana hasla----------- " << endl;
     cout << "Podaj nowe haslo: ";
 

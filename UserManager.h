@@ -29,9 +29,9 @@ class UserManager
 	bool checkLoginAndPassword();
 
 public:
-	UserManager(string userDatabaseName);
+ 	UserManager(string userDatabaseName) : userDatabase(userDatabaseName) {}
 
-	int getLoggedUserId();
+    int getLoggedUserId();
 
 	void loadUsersFromDataBase();
 	void newUserRegistration();

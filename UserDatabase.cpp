@@ -1,8 +1,5 @@
 #include "UserDatabase.h"
 
-UserDatabase::UserDatabase(string USERDATABASENAME) : userDataBaseName(USERDATABASENAME) {
-}
-
 void UserDatabase::saveNewUserInDataBase(User newUser) {
     fstream userDataBase;
 

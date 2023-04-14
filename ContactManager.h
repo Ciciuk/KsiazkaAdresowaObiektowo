@@ -1,7 +1,11 @@
 #ifndef CONTACTMANAGER_H
 #define CONTACTMANAGER_H
 
+#include <cstdlib>
+#include <fstream>
+#include <iomanip>
 #include <iostream>
+#include <string>
 #include <vector>
 
 #include "AditionalMethods.h"
@@ -21,8 +25,8 @@ class ContactManager {
     void displayRecord(vector<Contact>::iterator placeInStructureToDisplay);
 
    public:
-    ContactManager(string contactDatabaseName);
-    ContactManager(string contactDatabaseName, int userId);
+    ContactManager(string contactDatabaseName) : contactDatabase(contactDatabaseName) {
+    }
 
     void loadContactsFromDataBase(int userId);
     void displayAllContacts();
