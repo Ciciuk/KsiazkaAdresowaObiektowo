@@ -22,8 +22,6 @@ class ContactFile {
     }
 
     int getLastContactId();
-    int getCurrentUserId();
-    void setLastContactId(int newLastContactId);
 
     void saveNewContactInFile(Contact newUser);
     vector<Contact> loadContactsFromFile(int userId);

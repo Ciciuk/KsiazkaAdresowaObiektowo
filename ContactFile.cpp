@@ -4,10 +4,6 @@ int ContactFile::getLastContactId() {
     return lastContactId;
 }
 
-void ContactFile::setLastContactId(int newLastContactId) {
-    lastContactId = newLastContactId;
-}
-
 void ContactFile::saveNewContactInFile(Contact newContact) {
     fstream contactFile;
 
@@ -15,6 +11,8 @@ void ContactFile::saveNewContactInFile(Contact newContact) {
     contactFile << mergeContactLine(newContact) << endl;
 
     contactFile.close();
+
+    lastContactId = newContact.getContactId();
 }
 
 string ContactFile::mergeContactLine(Contact data) {

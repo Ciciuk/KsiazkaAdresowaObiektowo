@@ -12,7 +12,6 @@ void ContactManager::insertNewContact() {
 
     contacts.push_back(newContact);
     contactFile.saveNewContactInFile(newContact);
-    contactFile.setLastContactId(newContact.getContactId());
 
     cout << "Nowy kontakt dodany." << endl;
     system("pause");
