@@ -32,11 +32,12 @@ public:
  	UserManager(string userFileName) : userFile(userFileName) {}
 
     int getLoggedUserId();
+    void setLoggedUserId(int id);
 
-	void loadUsersFromFile();
-	void newUserRegistration();
-	bool logginng();
-	void changePassword();
+    void loadUsersFromFile();
+    void newUserRegistration();
+    bool logginng();
+    void changePassword();
 };
 
 #endif

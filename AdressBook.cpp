@@ -6,70 +6,27 @@ void AdressBook::registration() {
 void AdressBook::logging() {
     if (userManager.logginng()) {
         contactManager.loadContactsFromFile(userManager.getLoggedUserId());
-        internalMenu();
     }
 }
 
-void AdressBook::loginMenu() {
-    char menuChoice;
-
-    while (1) {
-        system("cls");
-        displayMainMenu();
-        menuChoice = AditionalMethods::getOneChar();
-        switch (menuChoice) {
-            case '1':
-                logging();
-                break;
-            case '2':
-                registration();
-                break;
-            case '9':
-                return;
-            default:
-                break;
-        }
-    }
+void AdressBook::insertNewContact(){
+    contactManager.insertNewContact();
 }
 
-void AdressBook::internalMenu() {
-    char menuChoice;
+void AdressBook::displayAllContacts(){
+    contactManager.displayAllContacts();
+}
 
-    if (userManager.getLoggedUserId() == 0)
-        return;
+void AdressBook::changePassword(){
+    userManager.changePassword();
+}
 
-    while (1) {
-        system("cls");
-        displayInternalMenu();
-        menuChoice = AditionalMethods::getOneChar();
-        switch (menuChoice) {
-            case '1':
-                contactManager.insertNewContact();
-                break;
-            case '2':
-                // displayContactByName(contacts);
-                break;
-            case '3':
-                // displayContactBySurname(contacts);
-                break;
-            case '4':
-                contactManager.displayAllContacts();
-                break;
-            case '5':
-                // lastId = removeContactSequence(contacts, lastId);
-                break;
-            case '6':
-                // editContactSequence(contacts);
-                break;
-            case '7':
-                userManager.changePassword();
-                break;
-            case '9':
-                return;
-            default:
-                break;
-        }
-    }
+int AdressBook::getLoggedUserId() {
+    return userManager.getLoggedUserId();
+}
+
+void AdressBook::logout() {
+    userManager.setLoggedUserId(0);
 }
 
 void AdressBook::displayMainMenu() {

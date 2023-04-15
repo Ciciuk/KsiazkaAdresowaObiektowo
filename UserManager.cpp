@@ -4,6 +4,10 @@ int UserManager::getLoggedUserId() {
     return loggedUser.getId();
 }
 
+void UserManager::setLoggedUserId(int id) {
+    loggedUser.setId(id);
+}
+
 void UserManager::loadUsersFromFile() {
     users = userFile.loadUsersFromFile();
 }

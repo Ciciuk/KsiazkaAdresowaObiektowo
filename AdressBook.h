@@ -11,17 +11,22 @@ class AdressBook {
     UserManager userManager;
     ContactManager contactManager;
 
-    void displayMainMenu();
-    void displayInternalMenu();
-    void internalMenu();
+
 
    public:
     AdressBook(string userFileName, string contactFileName) : userManager(userFileName), contactManager(contactFileName) {
         userManager.loadUsersFromFile();
     }
-    
+
+    void displayMainMenu();
+    void displayInternalMenu();
     void registration();
     void logging();
     void loginMenu();
+    void insertNewContact();
+    void displayAllContacts();
+    void changePassword();
+    int getLoggedUserId();
+    void logout();
 };
 #endif
