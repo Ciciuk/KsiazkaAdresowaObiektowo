@@ -29,7 +29,9 @@ class UserManager
 	bool checkLoginAndPassword();
 
 public:
- 	UserManager(string userFileName) : userFile(userFileName) {}
+ 	UserManager(string userFileName) : userFile(userFileName) {
+		loadUsersFromFile();
+	}
 
     int getLoggedUserId();
     void setLoggedUserId(int id);

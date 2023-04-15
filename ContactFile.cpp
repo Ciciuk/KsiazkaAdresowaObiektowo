@@ -7,7 +7,9 @@ int ContactFile::getLastContactId() {
 void ContactFile::saveNewContactInFile(Contact newContact) {
     fstream contactFile;
 
-    contactFile.open(contactFileName.c_str(), ios::out | ios::app);
+    contactFile.open(CONTACT_FILE_NAME.c_str(), ios::out | ios::app);
+
+    newContact.setContactId(lastContactId + 1);
     contactFile << mergeContactLine(newContact) << endl;
 
     contactFile.close();
@@ -36,7 +38,7 @@ vector<Contact> ContactFile::loadContactsFromFile(int userId) {
     vector<Contact> contacts;
     int currentUserId = userId;
 
-    contactFile.open(contactFileName.c_str(), ios::in);
+    contactFile.open(CONTACT_FILE_NAME.c_str(), ios::in);
 
     while (getline(contactFile, line, '|')) {
         if (line == "\n")

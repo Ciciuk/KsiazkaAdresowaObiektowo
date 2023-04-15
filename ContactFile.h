@@ -11,13 +11,13 @@
 using namespace std;
 
 class ContactFile {
-    const string contactFileName;
+    const string CONTACT_FILE_NAME;
     int lastContactId;
 
     string mergeContactLine(Contact data);
 
    public:
-    ContactFile(string CONTACTFILENAME) : contactFileName(CONTACTFILENAME) {
+    ContactFile(string contatFileName) : CONTACT_FILE_NAME(contatFileName) {
         lastContactId = 0;
     }
 

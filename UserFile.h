@@ -10,12 +10,12 @@
 using namespace std;
 
 class UserFile {
-    const string userFileName;
+    const string USER_FILE_NAME;
 
     string mergeUserLine(User data);
 
    public:
-    UserFile(string USERFILENAME) : userFileName(USERFILENAME) {
+    UserFile(string userFileName) : USER_FILE_NAME(userFileName) {
     }
     void saveNewUserInFile(User newUser);
     vector<User> loadUsersFromFile();
