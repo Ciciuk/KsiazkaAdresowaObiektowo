@@ -17,10 +17,9 @@ using namespace std;
 class ContactManager {
     vector<Contact> contacts;
     ContactFile contactFile;
+    int currentUserId;
 
-    Contact newContact;
-
-    void contactDataGathering();
+    Contact contactDataGathering();
     bool checkIfEmptyContacts();
     void displayRecord(vector<Contact>::iterator placeInStructureToDisplay);
 

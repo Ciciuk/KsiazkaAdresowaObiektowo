@@ -2,12 +2,14 @@
 
 void ContactManager::loadContactsFromFile(int userId) {
     contacts = contactFile.loadContactsFromFile(userId);
+    currentUserId = userId;
 }
 
 void ContactManager::insertNewContact() {
-    contactDataGathering();
-    newContact.setContactId(contactFile.getLastContactId() + 1);
-    newContact.setUserId(contactFile.getCurrentUserId());
+    Contact newContact;
+
+    newContact = contactDataGathering();
+
     contacts.push_back(newContact);
     contactFile.saveNewContactInFile(newContact);
     contactFile.setLastContactId(newContact.getContactId());
@@ -16,7 +18,9 @@ void ContactManager::insertNewContact() {
     system("pause");
 }
 
-void ContactManager::contactDataGathering() {
+Contact ContactManager::contactDataGathering() {
+    Contact newContact;
+
     system("cls");
     cout << setw(20) << "-------Dodawanie Kontaktu----------" << endl;
 
@@ -30,7 +34,11 @@ void ContactManager::contactDataGathering() {
     newContact.setEmail(AditionalMethods::getWholeLine());
     cout << "Podaj adres: ";
     newContact.setAdress(AditionalMethods::getWholeLine());
-    cout << endl;
+
+    newContact.setContactId(contactFile.getLastContactId() + 1);
+    newContact.setUserId(currentUserId);
+
+    return newContact;
 }
 
 bool ContactManager::checkIfEmptyContacts() {

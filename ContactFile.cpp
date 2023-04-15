@@ -4,10 +4,6 @@ int ContactFile::getLastContactId() {
     return lastContactId;
 }
 
-int ContactFile::getCurrentUserId() {
-    return currentUserId;
-}
-
 void ContactFile::setLastContactId(int newLastContactId) {
     lastContactId = newLastContactId;
 }
@@ -40,7 +36,7 @@ vector<Contact> ContactFile::loadContactsFromFile(int userId) {
     string line, temp;
     Contact data;
     vector<Contact> contacts;
-    currentUserId = userId;
+    int currentUserId = userId;
 
     contactFile.open(contactFileName.c_str(), ios::in);
 
