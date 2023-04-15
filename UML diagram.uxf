@@ -12,15 +12,20 @@
     <panel_attributes>AdressBook
 -----------------------------------------------------------------
 -userManager : UserManager
--contactManager : ContactManager
+-*contactManager : ContactManager
+CONTACT_FILE_NAME : string
 ----------------------------------------------------------
 +AdressBook()
--displayMainMenu() : void
--displayInternalMenu() : void
--internalMenu() : void
++displayMainMenu() : void
++displayInternalMenu() : void
 +registration() : void
 +logging() : void
 +loginMenu() : void
++insertNewContact() : void
++displayAllContacts() : void
++changePassword() : void
++logout() : void
++isSomeUserLogged() : bool
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -43,46 +48,19 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>774</x>
-      <y>9</y>
-      <w>279</w>
-      <h>270</h>
-    </coordinates>
-    <panel_attributes>UserManager
-------------------------------------------------------------------
--users : vector &lt;User&gt; 
--userDatabase : UserDatabase
--newUser : User
--loggedUser : User
-------------------------------------------------------------------
-+UserManager()
--userDataGathering() : void
--checkIfLoginIsNotUnique() : bool
--checkIfEmptyUsers() : bool
--checkPasword() : bool
--checkLoginAndPassword() : bool
-+loadUsersFromDataBase : void
-+newUserRegistration() : void
-+logging : bool
-+changePassword() : void</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
       <x>72</x>
       <y>9</y>
       <w>288</w>
       <h>279</h>
     </coordinates>
-    <panel_attributes>UserDatabase
+    <panel_attributes>UserFile
 --------------------------------------------------------------------------------------------------------------------------------------------
--userDataBaseName : string 
+-USER_FILE_NAME : string 
 ---------------------------------------------------------------------------------------------------------------------------------------------
-+UserDatabase()
++UserFile()
 -mergeUserLine() : string
-+saveNewUserInDataBase() : void
-+loadUsersFromDataBase() : vector &lt;User&gt;
++saveNewUserInFile() : void
++loadUsersFromFile() : vector &lt;User&gt;
 +saveUserAfterPaswordChange() : void
 </panel_attributes>
     <additional_attributes/>
@@ -113,14 +91,13 @@
     <panel_attributes>ContactManager
 ----------------------------------------------------------------------
 -contacts : vector&lt;Contact&gt;
--contactDatabase ContactDatabase
--newContact Contact
+-contactFile : ContactFile
+-CURRENT_USER_ID : integer
 -----------------------------------------------------------------------
 +ContactManager()
--contactDataGathering() : void
+-contactDataGathering() : Contact
 -checkIfEmptyContacts() : bool
 -displayRecord() : void
-+loadContactsFromDataBase() : void
 +displayAllContacts() : void
 +insertNewContact() : void
 
@@ -145,7 +122,7 @@
 -contactEmail : string
 -contactAdress : string
 -------------------------------------------------------
-</panel_attributes>
++Contact()</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -156,16 +133,43 @@
       <w>288</w>
       <h>234</h>
     </coordinates>
-    <panel_attributes>ContactDatabase
+    <panel_attributes>ContactFile
 --------------------------------------------------------------------------------------------------------------------------------------------
--contactDataBaseName : string 
+-CONTACT_FILE_NAME : string 
 -lastContactId : integer
--currentUserId : integer
----------------------------------------------------------------------------------------------------------------------------------------------
-+ContactDatabase()
-+saveNewContactInDataBase : void
-+loadContactsFromDataBase : vector &lt;Contact&gt;
--mergeContactLine() : string</panel_attributes>
+-------------------------------------------------------------------------------------------------------------
++ContactFile()
+-mergeContactLine() : string
++saveNewContactInFile : void
++loadContactsFromFile() : vector &lt;Contact&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>774</x>
+      <y>9</y>
+      <w>279</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>UserManager
+------------------------------------------------------------------
+-users : vector &lt;User&gt; 
+-userFile : UserFile
+-newUser : User
+-loggedUser : User
+------------------------------------------------------------------
++UserManager()
+-userDataGathering() : void
+-checkIfLoginIsNotUnique() : bool
+-checkIfEmptyUsers() : bool
+-checkPasword() : bool
+-checkLoginAndPassword() : bool
++loadUsersFromFile : void
++newUserRegistration() : void
++logging : bool
++changePassword() : void</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
