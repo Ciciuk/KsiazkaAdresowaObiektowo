@@ -10,7 +10,7 @@ class User {
     string userLogin;
     string userPassword;
 
-   public:
+public:
     void setId(int newId);
     void setLogin(string newLogin);
     void setPassword(string newPassword);

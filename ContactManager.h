@@ -23,12 +23,11 @@ class ContactManager {
     bool checkIfEmptyContacts();
     void displayRecord(vector<Contact>::iterator placeInStructureToDisplay);
 
-   public:
+public:
     ContactManager(string contactFileName, int userId) : contactFile(contactFileName), CURRENT_USER_ID(userId) {
         contacts = contactFile.loadContactsFromFile(userId);
     }
 
-   // void loadContactsFromFile(int userId);
     void displayAllContacts();
     void insertNewContact();
 };

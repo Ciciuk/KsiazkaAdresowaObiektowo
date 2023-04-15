@@ -14,7 +14,7 @@ class UserFile {
 
     string mergeUserLine(User data);
 
-   public:
+public:
     UserFile(string userFileName) : USER_FILE_NAME(userFileName) {
     }
     void saveNewUserInFile(User newUser);

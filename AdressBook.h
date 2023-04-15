@@ -13,7 +13,7 @@ class AdressBook {
     const string CONTACT_FILE_NAME;
 
 
-   public:
+public:
     AdressBook(string userFileName, string contactFileName) : userManager(userFileName), CONTACT_FILE_NAME(contactFileName) {
         contactManager = NULL;
     };

@@ -65,3 +65,13 @@ int main() {
        
     return 0;
 }
+
+#include "Contact.h"
+
+int contact_constructor_test_main(){
+Contact contact(1,2,"Kamil Adrian", "Tumulec");
+cout << "ID: " << contact.getContactId() << endl;
+cout << "IMIE: " << contact.getName() << endl;
+cout << "Nazwisko: " << contact.getSurname() << endl;
+cout << "Numer tel.: " << contact.getPhoneNumber() << endl;
+}
