@@ -10,14 +10,14 @@
 
 #include "User.h"
 #include "AditionalMethods.h"
-#include "UserDatabase.h"
+#include "UserFile.h"
 
 using namespace std;
 
 class UserManager
 {
 	vector<User> users;
-	UserDatabase userDatabase;
+	UserFile userFile;
 
 	User newUser;
 	User loggedUser;
@@ -29,14 +29,15 @@ class UserManager
 	bool checkLoginAndPassword();
 
 public:
-	UserManager(string userDatabaseName);
+ 	UserManager(string userFileName) : userFile(userFileName) {}
 
-	int getLoggedUserId();
+    int getLoggedUserId();
+    void setLoggedUserId(int id);
 
-	void loadUsersFromDataBase();
-	void newUserRegistration();
-	bool logginng();
-	void changePassword();
+    void loadUsersFromFile();
+    void newUserRegistration();
+    bool logginng();
+    void changePassword();
 };
 
 #endif

@@ -1,4 +1,7 @@
+#ifndef ADRESSBOOK_H
+#define ADRESSBOOK_H
 
+#include "AditionalMethods.h"
 #include "ContactManager.h"
 #include "UserManager.h"
 
@@ -8,14 +11,22 @@ class AdressBook {
     UserManager userManager;
     ContactManager contactManager;
 
-    void displayMainMenu();
-    void displayInternalMenu();
-    char getOneChar();
-    void internalMenu();
+
 
    public:
-    AdressBook(string userDatabaseName, string contactDatabaseName);
+    AdressBook(string userFileName, string contactFileName) : userManager(userFileName), contactManager(contactFileName) {
+        userManager.loadUsersFromFile();
+    }
+
+    void displayMainMenu();
+    void displayInternalMenu();
     void registration();
     void logging();
     void loginMenu();
+    void insertNewContact();
+    void displayAllContacts();
+    void changePassword();
+    int getLoggedUserId();
+    void logout();
 };
+#endif

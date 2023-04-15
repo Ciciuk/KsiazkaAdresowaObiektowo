@@ -1,36 +1,26 @@
 #include "ContactManager.h"
 
-#include <cstdlib>
-#include <fstream>
-#include <iomanip>
-#include <iostream>
-#include <string>
-#include <vector>
-
-ContactManager::ContactManager(string contactDatabaseName) : contactDatabase(contactDatabaseName) {
-}
-
-ContactManager::ContactManager(string contactDatabaseName, int userId) : contactDatabase(contactDatabaseName, userId) {
-    contacts = contactDatabase.loadContactsFromDataBase(userId);
-}
-
-void ContactManager::loadContactsFromDataBase(int userId) {
-    contacts = contactDatabase.loadContactsFromDataBase(userId);
+void ContactManager::loadContactsFromFile(int userId) {
+    contacts = contactFile.loadContactsFromFile(userId);
+    currentUserId = userId;
 }
 
 void ContactManager::insertNewContact() {
-    contactDataGathering();
-    newContact.setContactId(contactDatabase.getLastContactId() + 1);
-    newContact.setUserId(contactDatabase.getCurrentUserId());
+    Contact newContact;
+
+    newContact = contactDataGathering();
+
     contacts.push_back(newContact);
-    contactDatabase.saveNewContactInDataBase(newContact);
-    contactDatabase.setLastContactId(newContact.getContactId());
+    contactFile.saveNewContactInFile(newContact);
 
     cout << "Nowy kontakt dodany." << endl;
     system("pause");
 }
 
-void ContactManager::contactDataGathering() {
+Contact ContactManager::contactDataGathering() {
+    Contact newContact;
+
+    system("cls");
     cout << setw(20) << "-------Dodawanie Kontaktu----------" << endl;
 
     cout << "Podaj imie: ";
@@ -43,7 +33,11 @@ void ContactManager::contactDataGathering() {
     newContact.setEmail(AditionalMethods::getWholeLine());
     cout << "Podaj adres: ";
     newContact.setAdress(AditionalMethods::getWholeLine());
-    cout << endl;
+
+    newContact.setContactId(contactFile.getLastContactId() + 1);
+    newContact.setUserId(currentUserId);
+
+    return newContact;
 }
 
 bool ContactManager::checkIfEmptyContacts() {

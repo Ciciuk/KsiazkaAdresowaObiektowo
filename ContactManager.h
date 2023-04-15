@@ -1,30 +1,33 @@
 #ifndef CONTACTMANAGER_H
 #define CONTACTMANAGER_H
 
+#include <cstdlib>
+#include <fstream>
+#include <iomanip>
 #include <iostream>
+#include <string>
 #include <vector>
 
 #include "AditionalMethods.h"
 #include "Contact.h"
-#include "ContactDatabase.h"
+#include "ContactFile.h"
 
 using namespace std;
 
 class ContactManager {
     vector<Contact> contacts;
-    ContactDatabase contactDatabase;
+    ContactFile contactFile;
+    int currentUserId;
 
-    Contact newContact;
-
-    void contactDataGathering();
+    Contact contactDataGathering();
     bool checkIfEmptyContacts();
     void displayRecord(vector<Contact>::iterator placeInStructureToDisplay);
 
    public:
-    ContactManager(string contactDatabaseName);
-    ContactManager(string contactDatabaseName, int userId);
+    ContactManager(string contactFileName) : contactFile(contactFileName) {
+    }
 
-    void loadContactsFromDataBase(int userId);
+    void loadContactsFromFile(int userId);
     void displayAllContacts();
     void insertNewContact();
 };
