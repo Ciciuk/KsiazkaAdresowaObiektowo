@@ -1,10 +1,5 @@
 #include "ContactManager.h"
 
-void ContactManager::loadContactsFromFile(int userId) {
-    contacts = contactFile.loadContactsFromFile(userId);
-    currentUserId = userId;
-}
-
 void ContactManager::insertNewContact() {
     Contact newContact;
 
@@ -34,8 +29,7 @@ Contact ContactManager::contactDataGathering() {
     cout << "Podaj adres: ";
     newContact.setAdress(AditionalMethods::getWholeLine());
 
-    //newContact.setContactId(contactFile.getLastContactId() + 1);
-    newContact.setUserId(currentUserId);
+    newContact.setUserId(CURRENT_USER_ID);
 
     return newContact;
 }
@@ -44,7 +38,6 @@ bool ContactManager::checkIfEmptyContacts() {
     if (contacts.empty()) {
         cout << "Brak kontaktow ";
         system("pause");
-        ;
         return true;
     }
 
@@ -62,7 +55,6 @@ void ContactManager::displayAllContacts() {
     }
 
     system("pause");
-    ;
 }
 
 void ContactManager::displayRecord(vector<Contact>::iterator placeInStructureToDisplay) {

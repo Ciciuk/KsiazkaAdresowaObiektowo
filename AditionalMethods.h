@@ -7,7 +7,7 @@
 using namespace std;
 
 class AditionalMethods {
-   public:
+public:
     static string getWholeLine();
     static char getOneChar();
 };

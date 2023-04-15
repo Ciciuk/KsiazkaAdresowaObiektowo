@@ -4,29 +4,33 @@ void AdressBook::registration() {
     userManager.newUserRegistration();
 }
 void AdressBook::logging() {
-    if (userManager.logginng()) {
-        contactManager.loadContactsFromFile(userManager.getLoggedUserId());
-    }
+    if (userManager.logginng()) 
+        contactManager = new ContactManager(CONTACT_FILE_NAME, userManager.getLoggedUserId());
 }
 
 void AdressBook::insertNewContact(){
-    contactManager.insertNewContact();
+    contactManager->insertNewContact();
 }
 
 void AdressBook::displayAllContacts(){
-    contactManager.displayAllContacts();
+    contactManager->displayAllContacts();
 }
 
 void AdressBook::changePassword(){
     userManager.changePassword();
 }
 
-int AdressBook::getLoggedUserId() {
-    return userManager.getLoggedUserId();
-}
-
 void AdressBook::logout() {
     userManager.setLoggedUserId(0);
+    delete contactManager;
+    contactManager = NULL;
+}
+
+bool AdressBook::isSomeUserLogged(){
+    if(userManager.getLoggedUserId() != 0)
+        return true;
+    else
+        return false;
 }
 
 void AdressBook::displayMainMenu() {

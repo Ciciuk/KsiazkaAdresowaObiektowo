@@ -9,12 +9,20 @@ using namespace std;
 
 class AdressBook {
     UserManager userManager;
-    ContactManager contactManager;
+    ContactManager *contactManager;
+    const string CONTACT_FILE_NAME;
 
 
+public:
+    AdressBook(string userFileName, string contactFileName) : userManager(userFileName), CONTACT_FILE_NAME(contactFileName) {
+        contactManager = NULL;
+    };
 
-   public:
-    AdressBook(string userFileName, string contactFileName) : userManager(userFileName), contactManager(contactFileName) {}
+    ~AdressBook()
+    {
+        delete contactManager;
+        contactManager = NULL;
+    };
 
     void displayMainMenu();
     void displayInternalMenu();
@@ -24,7 +32,7 @@ class AdressBook {
     void insertNewContact();
     void displayAllContacts();
     void changePassword();
-    int getLoggedUserId();
     void logout();
+    bool isSomeUserLogged();
 };
 #endif

@@ -17,17 +17,17 @@ using namespace std;
 class ContactManager {
     vector<Contact> contacts;
     ContactFile contactFile;
-    int currentUserId;
+    const int CURRENT_USER_ID;
 
     Contact contactDataGathering();
     bool checkIfEmptyContacts();
     void displayRecord(vector<Contact>::iterator placeInStructureToDisplay);
 
-   public:
-    ContactManager(string contactFileName) : contactFile(contactFileName) {
+public:
+    ContactManager(string contactFileName, int userId) : contactFile(contactFileName), CURRENT_USER_ID(userId) {
+        contacts = contactFile.loadContactsFromFile(userId);
     }
 
-    void loadContactsFromFile(int userId);
     void displayAllContacts();
     void insertNewContact();
 };

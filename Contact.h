@@ -14,7 +14,16 @@ class Contact {
     string contactEmail;
     string contactAdress;
 
-   public:
+public:
+    Contact(int _contactId = 0, int _userId = 0, string _contactName = "", string _contactSurname = "", string _contactPhoneNumber = "", string _contactEmail = "", string _contactAdress = ""){
+        this->contactId = _contactId;
+        this->userId = _userId;
+        this->contactName = _contactName;
+        this->contactSurname = _contactSurname;
+        this->contactPhoneNumber = _contactPhoneNumber;
+        this->contactEmail = _contactEmail;
+        this->contactAdress = _contactAdress;
+    };
     void setContactId(int newId);
     void setUserId(int newUserId);
     void setName(string newName);
