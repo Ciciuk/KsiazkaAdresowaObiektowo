@@ -5,7 +5,7 @@ void AdressBook::registration() {
 }
 void AdressBook::logging() {
     if (userManager.logginng()) {
-        contactManager.loadContactsFromDataBase(userManager.getLoggedUserId());
+        contactManager.loadContactsFromFile(userManager.getLoggedUserId());
         internalMenu();
     }
 }

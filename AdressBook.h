@@ -16,8 +16,8 @@ class AdressBook {
     void internalMenu();
 
    public:
-    AdressBook(string userDatabaseName, string contactDatabaseName) : userManager(userDatabaseName), contactManager(contactDatabaseName) {
-        userManager.loadUsersFromDataBase();
+    AdressBook(string userFileName, string contactFileName) : userManager(userFileName), contactManager(contactFileName) {
+        userManager.loadUsersFromFile();
     }
     
     void registration();

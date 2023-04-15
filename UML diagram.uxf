@@ -17,7 +17,6 @@
 +AdressBook()
 -displayMainMenu() : void
 -displayInternalMenu() : void
--getOneChar() : void
 -internalMenu() : void
 +registration() : void
 +logging() : void
@@ -99,7 +98,8 @@
     <panel_attributes>AditionalMethods
 -------------------------------------------------------
 ------------------------------------
-+getWholeLine() : string</panel_attributes>
++getWholeLine() : string
++getOneChar() : void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

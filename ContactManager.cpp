@@ -1,16 +1,16 @@
 #include "ContactManager.h"
 
-void ContactManager::loadContactsFromDataBase(int userId) {
-    contacts = contactDatabase.loadContactsFromDataBase(userId);
+void ContactManager::loadContactsFromFile(int userId) {
+    contacts = contactFile.loadContactsFromFile(userId);
 }
 
 void ContactManager::insertNewContact() {
     contactDataGathering();
-    newContact.setContactId(contactDatabase.getLastContactId() + 1);
-    newContact.setUserId(contactDatabase.getCurrentUserId());
+    newContact.setContactId(contactFile.getLastContactId() + 1);
+    newContact.setUserId(contactFile.getCurrentUserId());
     contacts.push_back(newContact);
-    contactDatabase.saveNewContactInDataBase(newContact);
-    contactDatabase.setLastContactId(newContact.getContactId());
+    contactFile.saveNewContactInFile(newContact);
+    contactFile.setLastContactId(newContact.getContactId());
 
     cout << "Nowy kontakt dodany." << endl;
     system("pause");

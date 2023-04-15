@@ -4,8 +4,8 @@ int UserManager::getLoggedUserId() {
     return loggedUser.getId();
 }
 
-void UserManager::loadUsersFromDataBase() {
-    users = userDatabase.loadUsersFromDataBase();
+void UserManager::loadUsersFromFile() {
+    users = userFile.loadUsersFromFile();
 }
 
 void UserManager::newUserRegistration() {
@@ -19,7 +19,7 @@ void UserManager::newUserRegistration() {
         newUser.setId(users.back().getId() + 1);
 
     users.push_back(newUser);
-    userDatabase.saveNewUserInDataBase(newUser);
+    userFile.saveNewUserInFile(newUser);
 
     cout << "Rejestracja zakonczona" << endl;
     system("pause");
@@ -138,7 +138,7 @@ void UserManager::changePassword() {
 
     i->setPassword(AditionalMethods::getWholeLine());
 
-    userDatabase.saveUserAfterPaswordChange(users);
+    userFile.saveUserAfterPaswordChange(users);
 
     cout << "Haslo zostalo zmienione: ";
     system("pause");

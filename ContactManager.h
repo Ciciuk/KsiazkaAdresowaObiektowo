@@ -10,13 +10,13 @@
 
 #include "AditionalMethods.h"
 #include "Contact.h"
-#include "ContactDatabase.h"
+#include "ContactFile.h"
 
 using namespace std;
 
 class ContactManager {
     vector<Contact> contacts;
-    ContactDatabase contactDatabase;
+    ContactFile contactFile;
 
     Contact newContact;
 
@@ -25,10 +25,10 @@ class ContactManager {
     void displayRecord(vector<Contact>::iterator placeInStructureToDisplay);
 
    public:
-    ContactManager(string contactDatabaseName) : contactDatabase(contactDatabaseName) {
+    ContactManager(string contactFileName) : contactFile(contactFileName) {
     }
 
-    void loadContactsFromDataBase(int userId);
+    void loadContactsFromFile(int userId);
     void displayAllContacts();
     void insertNewContact();
 };

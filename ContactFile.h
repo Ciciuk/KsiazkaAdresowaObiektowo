@@ -1,5 +1,5 @@
-#ifndef CONTACTDATABASE_H
-#define CONTACTDATABASE_H
+#ifndef CONTACTFILE_H
+#define CONTACTFILE_H
 
 #include <cstdlib>
 #include <fstream>
@@ -10,15 +10,15 @@
 
 using namespace std;
 
-class ContactDatabase {
-    const string contactDataBaseName;
+class ContactFile {
+    const string contactFileName;
     int lastContactId;
     int currentUserId;
 
     string mergeContactLine(Contact data);
 
    public:
-    ContactDatabase(string CONTACTDATABASENAME) : contactDataBaseName(CONTACTDATABASENAME) {
+    ContactFile(string CONTACTFILENAME) : contactFileName(CONTACTFILENAME) {
         currentUserId = 0;
         lastContactId = 0;
     }
@@ -27,7 +27,7 @@ class ContactDatabase {
     int getCurrentUserId();
     void setLastContactId(int newLastContactId);
 
-    void saveNewContactInDataBase(Contact newUser);
-    vector<Contact> loadContactsFromDataBase(int userId);
+    void saveNewContactInFile(Contact newUser);
+    vector<Contact> loadContactsFromFile(int userId);
 };
 #endif
