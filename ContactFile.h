@@ -16,7 +16,7 @@ class ContactFile {
 
     string mergeContactLine(Contact data);
 
-   public:
+public:
     ContactFile(string contatFileName) : CONTACT_FILE_NAME(contatFileName) {
         lastContactId = 0;
     }

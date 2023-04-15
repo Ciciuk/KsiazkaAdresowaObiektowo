@@ -25,7 +25,7 @@ int main() {
                 default:
                     break;
             }
-            while (adressBook.getLoggedUserId() != 0) {
+            while (adressBook.isSomeUserLogged()) {
                 system("cls");
                 adressBook.displayInternalMenu();
                 menuChoice = AditionalMethods::getOneChar();
