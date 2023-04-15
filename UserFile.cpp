@@ -3,7 +3,7 @@
 void UserFile::saveNewUserInFile(User newUser) {
     fstream userFile;
 
-    userFile.open(userFileName.c_str(), ios::out | ios::app);
+    userFile.open(USER_FILE_NAME.c_str(), ios::out | ios::app);
 
     userFile << mergeUserLine(newUser) << endl;
 
@@ -27,7 +27,7 @@ vector<User> UserFile::loadUsersFromFile() {
     User data;
     fstream userFile;
 
-    userFile.open(userFileName.c_str(), ios::in);
+    userFile.open(USER_FILE_NAME.c_str(), ios::in);
 
     while (getline(userFile, line, '|')) {
         if (line == "\n")
@@ -47,7 +47,7 @@ vector<User> UserFile::loadUsersFromFile() {
 void UserFile::saveUserAfterPaswordChange(vector<User> users) {  // tutaj nie wiem czy lepiej zapisac sobie u�ytkownik�w w tej klasie, przesy�a� ich do tej funkcji czy zrobic jeszcze raz proces wczytywania z pliku
     fstream userFile;
 
-    userFile.open(userFileName, ios::out | ios::trunc);
+    userFile.open(USER_FILE_NAME, ios::out | ios::trunc);
 
     for (auto i = users.begin(); i < users.end(); i++) {
         userFile << mergeUserLine(*i) << endl;

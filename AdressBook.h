@@ -14,9 +14,7 @@ class AdressBook {
 
 
    public:
-    AdressBook(string userFileName, string contactFileName) : userManager(userFileName), contactManager(contactFileName) {
-        userManager.loadUsersFromFile();
-    }
+    AdressBook(string userFileName, string contactFileName) : userManager(userFileName), contactManager(contactFileName) {}
 
     void displayMainMenu();
     void displayInternalMenu();
