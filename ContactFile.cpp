@@ -8,6 +8,8 @@ void ContactFile::saveNewContactInFile(Contact newContact) {
     fstream contactFile;
 
     contactFile.open(CONTACT_FILE_NAME.c_str(), ios::out | ios::app);
+
+    newContact.setContactId(lastContactId + 1);
     contactFile << mergeContactLine(newContact) << endl;
 
     contactFile.close();

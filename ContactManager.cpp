@@ -34,7 +34,7 @@ Contact ContactManager::contactDataGathering() {
     cout << "Podaj adres: ";
     newContact.setAdress(AditionalMethods::getWholeLine());
 
-    newContact.setContactId(contactFile.getLastContactId() + 1);
+    //newContact.setContactId(contactFile.getLastContactId() + 1);
     newContact.setUserId(currentUserId);
 
     return newContact;
