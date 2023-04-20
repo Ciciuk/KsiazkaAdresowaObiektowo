@@ -30,6 +30,7 @@ Contact ContactManager::contactDataGathering() {
     newContact.setAdress(AditionalMethods::getWholeLine());
 
     newContact.setUserId(CURRENT_USER_ID);
+    newContact.setContactId(contactFile.getLastContactId() + 1);
 
     return newContact;
 }

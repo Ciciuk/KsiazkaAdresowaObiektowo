@@ -74,4 +74,6 @@ cout << "ID: " << contact.getContactId() << endl;
 cout << "IMIE: " << contact.getName() << endl;
 cout << "Nazwisko: " << contact.getSurname() << endl;
 cout << "Numer tel.: " << contact.getPhoneNumber() << endl;
+return 0;
+
 }
