@@ -5,17 +5,18 @@
 #include <string>
 #include <vector>
 
+#include "File.h"
 #include "User.h"
 
 using namespace std;
 
-class UserFile {
-    const string USER_FILE_NAME;
+class UserFile :public File{
+
 
     string mergeUserLine(User data);
 
 public:
-    UserFile(string userFileName) : USER_FILE_NAME(userFileName) {
+    UserFile(string userFileName) : File(userFileName) {
     }
     void saveNewUserInFile(User newUser);
     vector<User> loadUsersFromFile();
