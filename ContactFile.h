@@ -6,18 +6,17 @@
 #include <string>
 #include <vector>
 
+#include "File.h"
 #include "Contact.h"
 
 using namespace std;
 
-class ContactFile {
-    const string CONTACT_FILE_NAME;
+class ContactFile :public File{
     int lastContactId;
-
     string mergeContactLine(Contact data);
 
 public:
-    ContactFile(string contatFileName) : CONTACT_FILE_NAME(contatFileName) {
+    ContactFile(string contactFileName) : File(contactFileName) {
         lastContactId = 0;
     }
 
