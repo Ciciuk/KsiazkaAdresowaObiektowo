@@ -18,8 +18,7 @@ public:
         contactManager = NULL;
     };
 
-    ~AdressBook()
-    {
+    ~AdressBook(){
         delete contactManager;
         contactManager = NULL;
     };
@@ -34,5 +33,6 @@ public:
     void changePassword();
     void logout();
     bool isSomeUserLogged();
+    void removeContact();
 };
 #endif

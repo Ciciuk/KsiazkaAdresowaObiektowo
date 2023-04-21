@@ -27,3 +27,19 @@ char AditionalMethods::getOneChar() {
 
         return sign;
 }
+
+int AditionalMethods::getId() {
+        string line;
+        int number = 0;
+
+        while (true) {
+            cin.sync();
+            getline(cin, line);
+            stringstream input(line);
+            if (input >> number)
+                break;
+            cout << "Niepoprawne ID wpisz ponownie" << endl;
+        }
+
+        return number;
+}

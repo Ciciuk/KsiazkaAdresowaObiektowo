@@ -62,3 +62,24 @@ vector<Contact> ContactFile::loadContactsFromFile(int userId) {
 
     return contacts;
 }
+
+void ContactFile::saveToFileAfterContactRemove(int contactToDeleteId) {
+    fstream userFile, tempUserFile;
+    string line;
+
+    userFile.open(getFileName().c_str(), ios::in);
+    tempUserFile.open(*(getFileName().c_str()) + "_temp.txt", ios::out | ios::trunc);
+
+    while (getline(userFile, line)) {
+        if (stoi((line.substr(0, line.find('|')))) != contactToDeleteId) {
+            tempUserFile << line << endl;
+            lastContactId = stoi((line.substr(0, line.find('|'))));
+        }
+    }
+
+    userFile.close();
+    tempUserFile.close();
+
+    remove("adresaci.txt");
+    rename(*(getFileName().c_str()) + "_temp.txt", "adresaci.txt");
+}

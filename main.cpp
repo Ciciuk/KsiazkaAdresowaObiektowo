@@ -43,7 +43,7 @@ int main() {
                         adressBook.displayAllContacts();
                         break;
                     case '5':
-                        // lastId = removeContactSequence(contacts, lastId);
+                        adressBook.removeContact();
                         break;
                     case '6':
                         // editContactSequence(contacts);

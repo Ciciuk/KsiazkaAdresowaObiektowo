@@ -46,6 +46,7 @@ vector<User> UserFile::loadUsersFromFile() {
 
 void UserFile::saveUserAfterPaswordChange(vector<User> users) {  // tutaj nie wiem czy lepiej zapisac sobie u�ytkownik�w w tej klasie, przesy�a� ich do tej funkcji czy zrobic jeszcze raz proces wczytywania z pliku
     fstream userFile;
+    string tempFileName = getFileName().c_str();
 
     userFile.open(getFileName().c_str(), ios::out | ios::trunc);
 

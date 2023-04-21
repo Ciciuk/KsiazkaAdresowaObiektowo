@@ -1,6 +1,7 @@
 #ifndef CONTACTMANAGER_H
 #define CONTACTMANAGER_H
 
+#include <algorithm>
 #include <cstdlib>
 #include <fstream>
 #include <iomanip>
@@ -30,6 +31,7 @@ public:
 
     void displayAllContacts();
     void insertNewContact();
+    void removeContact();
 };
 
 #endif

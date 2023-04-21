@@ -11,10 +11,7 @@
 using namespace std;
 
 class UserFile :public File{
-
-
     string mergeUserLine(User data);
-
 public:
     UserFile(string userFileName) : File(userFileName) {
     }
