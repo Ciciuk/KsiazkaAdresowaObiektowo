@@ -67,3 +67,36 @@ void ContactManager::displayRecord(vector<Contact>::iterator placeInStructureToD
     cout << left << setw(20) << "Adres:" << placeInStructureToDisplay->getAdress() << endl;
     cout << endl;
 }
+
+void ContactManager::removeContact() {
+    int idToDelete;
+    vector<Contact>::iterator contactToRemove;
+
+    if (checkIfEmptyContacts())
+        return;
+
+    displayAllContacts();
+    cout << endl;
+    cout << "Podaj ID kontaktu ktory chcesz usunac: ";
+    idToDelete = AditionalMethods::getId();
+
+    system("cls");
+    contactToRemove = find_if(contacts.begin(), contacts.end(), [idToDelete](Contact vi) { return vi.getContactId() == idToDelete; });  // wyrazenie lambda  - przeszukuje wektor contact i zwraca iterator do pozycji ktorej id jest rowne idToDelete
+    if (contactToRemove == contacts.end()) {
+        cout << "Nie znaleziono takiego ID ";
+        system("pause");
+        
+        return ;
+    }
+
+    displayRecord(contactToRemove);
+    cout << endl;
+    cout << "Jesli chcesz usunac powyzszy kontakt wcisnij 't' " << endl;
+
+    if (AditionalMethods::getOneChar() == 't') {
+        contactFile.saveToFileAfterContactRemove(contactToRemove->getContactId());
+        contacts.erase(contactToRemove);
+        cout << "Kontakt został usuniety " << endl;
+        system("pause");
+    }
+}
