@@ -46,7 +46,7 @@ int main() {
                         adressBook.removeContact();
                         break;
                     case '6':
-                        // editContactSequence(contacts);
+                        adressBook.editContact();
                         break;
                     case '7':
                         adressBook.changePassword();

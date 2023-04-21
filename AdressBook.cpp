@@ -20,6 +20,10 @@ void AdressBook::removeContact() {
     contactManager->removeContact();
 }
 
+void AdressBook::editContact() {
+    contactManager->editContact();
+}
+
 void AdressBook::changePassword(){
     userManager.changePassword();
 }
@@ -46,7 +50,7 @@ void AdressBook::displayInternalMenu() {
     // cout << "3. Wyszukaj po nazwisku" << endl;
     cout << "4. Wyswietl wszystkich adresatow" << endl;
     cout << "5. Usun adresata" << endl;
-    // cout << "6. Edytuj adresata" << endl;
+    cout << "6. Edytuj adresata" << endl;
     cout << "7. Zmien haslo" << endl;
     cout << "9. Wyloguj sie" << endl;
 }

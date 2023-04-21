@@ -25,5 +25,6 @@ public:
     void saveNewContactInFile(Contact newUser);
     vector<Contact> loadContactsFromFile(int userId);
     void saveToFileAfterContactRemove(int contactToDeleteId);
+    void saveToFileAfterContactEdit(vector<Contact>::iterator contactToEdit);
 };
 #endif

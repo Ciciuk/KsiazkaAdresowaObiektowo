@@ -80,6 +80,28 @@ void ContactFile::saveToFileAfterContactRemove(int contactToDeleteId) {
     userFile.close();
     tempUserFile.close();
 
-    remove("adresaci.txt");
-    rename(*(getFileName().c_str()) + "_temp.txt", "adresaci.txt");
+    remove(getFileName().c_str());
+    rename(*(getFileName().c_str()) + "_temp.txt", getFileName().c_str());
+}
+
+void ContactFile::saveToFileAfterContactEdit(vector<Contact>::iterator contactToEdit) {
+    fstream userFile, tempUserFile;
+    string line;
+
+
+    userFile.open(getFileName().c_str(), ios::in);
+    tempUserFile.open(*(getFileName().c_str()) + "_temp.txt", ios::out | ios::trunc);
+
+    while (getline(userFile, line)) {
+        if (stoi((line.substr(0, line.find('|')))) != contactToEdit->getContactId())
+            tempUserFile << line << endl;
+        else if (stoi((line.substr(0, line.find('|')))) == contactToEdit->getContactId())
+            tempUserFile << mergeContactLine(*contactToEdit) << endl;
+    }
+
+    userFile.close();
+    tempUserFile.close();
+
+    remove(getFileName().c_str());
+    rename(*(getFileName().c_str()) + "_temp.txt", getFileName().c_str());
 }

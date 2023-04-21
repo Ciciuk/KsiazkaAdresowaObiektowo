@@ -19,10 +19,9 @@ class UserManager
 	vector<User> users;
 	UserFile userFile;
 
-	User newUser;
 	User loggedUser;
 
-	void userDataGathering();
+	User userDataGathering();
 	bool checkIfLoginIsNotUnique(string login);
 	bool checkIfEmptyUsers();
 	bool checkPassword(vector<User>::iterator i);

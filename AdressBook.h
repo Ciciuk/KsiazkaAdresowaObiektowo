@@ -34,5 +34,6 @@ public:
     void logout();
     bool isSomeUserLogged();
     void removeContact();
+    void editContact();
 };
 #endif

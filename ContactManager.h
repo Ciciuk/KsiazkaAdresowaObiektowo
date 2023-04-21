@@ -23,8 +23,10 @@ class ContactManager {
     Contact contactDataGathering();
     bool checkIfEmptyContacts();
     void displayRecord(vector<Contact>::iterator placeInStructureToDisplay);
+    void editRecordMenu(vector<Contact>::iterator& contactToEdit);
+    void displayEditMenu();
 
-public:
+    public : 
     ContactManager(string contactFileName, int userId) : contactFile(contactFileName), CURRENT_USER_ID(userId) {
         contacts = contactFile.loadContactsFromFile(userId);
     }
@@ -32,6 +34,7 @@ public:
     void displayAllContacts();
     void insertNewContact();
     void removeContact();
+    void editContact();
 };
 
 #endif
