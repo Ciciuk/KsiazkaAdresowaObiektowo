@@ -14,8 +14,8 @@ void UserManager::loadUsersFromFile() {
 
 void UserManager::newUserRegistration() {
     system("cls");
-
-    userDataGathering();
+    User newUser;
+    newUser = userDataGathering();
 
     if (users.empty())
         newUser.setId(1);
@@ -29,8 +29,9 @@ void UserManager::newUserRegistration() {
     system("pause");
 }
 
-void UserManager::userDataGathering() {
+User UserManager::userDataGathering() {
     string login;
+    User newUser;
 
     cout << setw(20) << "----------Rejestracja----------- " << endl;
 
@@ -42,6 +43,8 @@ void UserManager::userDataGathering() {
 
     cout << "Podaj haslo: " << endl;
     newUser.setPassword(AditionalMethods::getWholeLine());
+
+    return newUser;
 }
 
 bool UserManager::checkIfLoginIsNotUnique(string login) {
@@ -72,14 +75,17 @@ bool UserManager::checkLoginAndPassword() {
             if (checkPassword(i)) {
                 loggedUser = *i;
                 return true;
-            } else
+            } else{
+                loggedUser.setId(0);
                 return false;
+            } 
         }
     }
 
     cout << "Brak loginu w bazie danych:  ";
     system("pause");
 
+    loggedUser.setId(0);
     return false;
 }
 

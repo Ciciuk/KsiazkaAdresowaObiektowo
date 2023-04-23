@@ -100,3 +100,73 @@ void ContactManager::removeContact() {
         system("pause");
     }
 }
+
+void ContactManager::editRecordMenu(vector<Contact>::iterator& contactToEdit) {
+    while (1) {
+        system("cls");
+        displayRecord(contactToEdit);
+        displayEditMenu();
+        switch (AditionalMethods::getOneChar()) {
+            case '1':
+                cout << "Edytuj imie: " << endl;
+                contactToEdit->setName(AditionalMethods::getWholeLine());
+                break;
+            case '2':
+                cout << "Edytuj nazwisko: " << endl;
+                contactToEdit->setSurname(AditionalMethods::getWholeLine());
+                break;
+            case '3':
+                cout << "Edytuj nr. tel: " << endl;
+                contactToEdit->setPhoneNumber(AditionalMethods::getWholeLine());
+                break;
+            case '4':
+                cout << "Edytuj email: " << endl;
+                contactToEdit->setEmail(AditionalMethods::getWholeLine());
+                break;
+            case '5':
+                cout << "Edytuj adres: " << endl;
+                contactToEdit->setAdress(AditionalMethods::getWholeLine());
+                break;
+            case '6':
+                return;
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+void ContactManager::editContact() {
+    int idToEdit;
+    vector<Contact>::iterator contactToEdit;
+
+    if (checkIfEmptyContacts())
+        return;
+
+    displayAllContacts();
+    cout << endl;
+    cout << "Podaj ID kontaktu ktory chcesz edytowac: ";
+    idToEdit = AditionalMethods::getId();
+    system("cls");
+
+    contactToEdit = find_if(contacts.begin(), contacts.end(), [idToEdit](Contact vi) { return vi.getContactId() == idToEdit; });  ////wyrazenie lambda  - przeszukuje wektor contact i zwraca iterator do pozycji ktorej id jest rowne idToEdit
+
+    if (contactToEdit == contacts.end()) {
+        cout << "Nie znaleziono takiego ID ";
+        system("pause");
+        ;
+        return;
+    }
+
+    editRecordMenu(contactToEdit);
+    contactFile.saveToFileAfterContactEdit(contactToEdit);
+}
+
+void ContactManager::displayEditMenu() {
+    cout << "1. Edytuj imie" << endl;
+    cout << "2. Edytuj nazwisko" << endl;
+    cout << "3. Edytuj numer telefonu" << endl;
+    cout << "4. Edytuj adres e-mail" << endl;
+    cout << "5. Edytuj adres zamieszkania" << endl;
+    cout << "6. Wyjdz" << endl;
+}
