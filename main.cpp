@@ -34,10 +34,10 @@ int main() {
                         adressBook.insertNewContact();
                         break;
                     case '2':
-                        // displayContactByName(contacts);
+                        adressBook.displayByName();
                         break;
                     case '3':
-                        // displayContactBySurname(contacts);
+                        adressBook.displayBySurname();
                         break;
                     case '4':
                         adressBook.displayAllContacts();

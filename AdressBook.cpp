@@ -28,6 +28,13 @@ void AdressBook::changePassword(){
     userManager.changePassword();
 }
 
+void AdressBook::displayByName(){
+    contactManager->displayContactByName();
+}
+void AdressBook::displayBySurname(){
+    contactManager->displayContactBySurname();
+}
+
 void AdressBook::logout() {
     userManager.setLoggedUserId(0);
     delete contactManager;
@@ -46,8 +53,8 @@ void AdressBook::displayMainMenu() {
 
 void AdressBook::displayInternalMenu() {
     cout << "1. Dodaj adresata" << endl;
-    // cout << "2. Wyszukaj po imieniu" << endl;
-    // cout << "3. Wyszukaj po nazwisku" << endl;
+    cout << "2. Wyszukaj po imieniu" << endl;
+    cout << "3. Wyszukaj po nazwisku" << endl;
     cout << "4. Wyswietl wszystkich adresatow" << endl;
     cout << "5. Usun adresata" << endl;
     cout << "6. Edytuj adresata" << endl;

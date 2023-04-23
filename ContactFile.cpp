@@ -87,8 +87,6 @@ void ContactFile::saveToFileAfterContactRemove(int contactToDeleteId) {
 void ContactFile::saveToFileAfterContactEdit(vector<Contact>::iterator contactToEdit) {
     fstream contactFile, tempCoontactFile;
     string line;
-   // string name = "temp_" + *(getFileName().c_str());
- //   string name = "temp_" + getFileName();
 
     contactFile.open(getFileName().c_str(), ios::in);
     tempCoontactFile.open(("temp_" + getFileName()).c_str(), ios::out | ios::trunc);

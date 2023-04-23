@@ -170,3 +170,40 @@ void ContactManager::displayEditMenu() {
     cout << "5. Edytuj adres zamieszkania" << endl;
     cout << "6. Wyjdz" << endl;
 }
+
+void ContactManager::displayContactByName() {
+    string searchingName;
+
+    if (checkIfEmptyContacts())
+        return;
+
+    cout << "Podaj Imie ktore chcesz wyszukac: ";
+    searchingName = AditionalMethods::getWholeLine();
+    system("cls");
+
+    for (vector<Contact>::iterator i = contacts.begin(); i < contacts.end(); i++) {
+        if (i->getName() == searchingName)
+            displayRecord(i);
+    }
+
+    system("pause");
+}
+
+void ContactManager::displayContactBySurname() {
+    string searchingSurname;
+
+    if (checkIfEmptyContacts())
+        return;
+
+    cout << "Podaj Nazwisko ktore chcesz wyszukac: ";
+    searchingSurname = AditionalMethods::getWholeLine();
+    system("cls");
+
+    for (vector<Contact>::iterator i = contacts.begin(); i < contacts.end(); i++) {
+        if (i->getSurname() == searchingSurname)
+            displayRecord(i);
+    }
+
+    system("pause");
+    ;
+}

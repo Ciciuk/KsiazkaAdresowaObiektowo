@@ -35,6 +35,8 @@ class ContactManager {
     void insertNewContact();
     void removeContact();
     void editContact();
+    void displayContactByName();
+    void displayContactBySurname();
 };
 
 #endif
