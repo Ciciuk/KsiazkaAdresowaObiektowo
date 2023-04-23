@@ -39,5 +39,6 @@
     "iostream": "cpp",
     "ostream": "cpp",
     "fstream": "cpp"
-  }
+  },
+  "C_Cpp_Runner.showCompilationTime": false
 }
