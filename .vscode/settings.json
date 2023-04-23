@@ -39,6 +39,8 @@
     "iostream": "cpp",
     "ostream": "cpp",
     "fstream": "cpp",
-    "iomanip": "cpp"
-  }
+    "iomanip": "cpp",
+    "*.tcc": "cpp"
+  },
+  "C_Cpp_Runner.showCompilationTime": false
 }

@@ -64,44 +64,45 @@ vector<Contact> ContactFile::loadContactsFromFile(int userId) {
 }
 
 void ContactFile::saveToFileAfterContactRemove(int contactToDeleteId) {
-    fstream userFile, tempUserFile;
+    fstream contactFile, tempUserFile;
     string line;
 
-    userFile.open(getFileName().c_str(), ios::in);
-    tempUserFile.open(*(getFileName().c_str()) + "_temp.txt", ios::out | ios::trunc);
+    contactFile.open(getFileName().c_str(), ios::in);
+    tempUserFile.open(("temp_" + getFileName()).c_str(), ios::out | ios::trunc);
 
-    while (getline(userFile, line)) {
+    while (getline(contactFile, line)) {
         if (stoi((line.substr(0, line.find('|')))) != contactToDeleteId) {
             tempUserFile << line << endl;
             lastContactId = stoi((line.substr(0, line.find('|'))));
         }
     }
 
-    userFile.close();
+    contactFile.close();
     tempUserFile.close();
 
     remove(getFileName().c_str());
-    rename(*(getFileName().c_str()) + "_temp.txt", getFileName().c_str());
+    rename(("temp_" + getFileName()).c_str(), getFileName().c_str());
 }
 
 void ContactFile::saveToFileAfterContactEdit(vector<Contact>::iterator contactToEdit) {
-    fstream userFile, tempUserFile;
+    fstream contactFile, tempCoontactFile;
     string line;
+   // string name = "temp_" + *(getFileName().c_str());
+ //   string name = "temp_" + getFileName();
 
+    contactFile.open(getFileName().c_str(), ios::in);
+    tempCoontactFile.open(("temp_" + getFileName()).c_str(), ios::out | ios::trunc);
 
-    userFile.open(getFileName().c_str(), ios::in);
-    tempUserFile.open(*(getFileName().c_str()) + "_temp.txt", ios::out | ios::trunc);
-
-    while (getline(userFile, line)) {
+    while (getline(contactFile, line)) {
         if (stoi((line.substr(0, line.find('|')))) != contactToEdit->getContactId())
-            tempUserFile << line << endl;
+            tempCoontactFile << line << endl;
         else if (stoi((line.substr(0, line.find('|')))) == contactToEdit->getContactId())
-            tempUserFile << mergeContactLine(*contactToEdit) << endl;
+            tempCoontactFile << mergeContactLine(*contactToEdit) << endl;
     }
 
-    userFile.close();
-    tempUserFile.close();
+    contactFile.close();
+    tempCoontactFile.close();
 
     remove(getFileName().c_str());
-    rename(*(getFileName().c_str()) + "_temp.txt", getFileName().c_str());
+    rename(("temp_" + getFileName()).c_str(), getFileName().c_str());
 }
